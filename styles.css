@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.calc-body {
+    border: 4px solid lightgray;
+    height: 500px;
+    width: 400px;
+}
+
+.calc-screen {
+    height: 100px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.num-op-wrapper {
+    display: flex;
+    height: 400px;
+}
+
+.num-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 3;
+}
+
+.op-grid {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+button {
+    height: 100px;
+    width: 100px;
+    flex-grow: 1;
+}
+
+.op-button {
+    flex-shrink: 1;
+}
+
+.screen-text {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 78px;
+    text-align: right;
+    color: white;
+}
