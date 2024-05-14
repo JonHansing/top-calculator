@@ -64,5 +64,7 @@ opButtons.forEach((btn) => {
             operator = undefined;
             holdVal = '';
         };
+        if (btn.textContent == '.' && !screenText.textContent.includes('.'))
+            screenText.textContent += '.';
     });
 });
