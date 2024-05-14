@@ -1,8 +1,5 @@
 //Variables for the caculator operations
-let firstNum = undefined;
-let secondNum = undefined;
 let operator = undefined;
-
 let holdVal = '';
 
 //Functions for basic math operations
@@ -39,7 +36,7 @@ const screenText = document.querySelector('.screen-text');
 const numButtons = document.querySelectorAll('.num-button');
 const opButtons = document.querySelectorAll('.op-button');
 const equalsButton = document.querySelector('.equals-button');
-screenText.textContent = '0';
+screenText.textContent = 0;
 
 numButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -62,5 +59,10 @@ opButtons.forEach((btn) => {
         };
 
         if (btn.textContent == '=') operator = undefined;
+        if (btn.textContent == 'AC') {
+            screenText.textContent = 0;
+            operator = undefined;
+            holdVal = '';
+        };
     });
 });
