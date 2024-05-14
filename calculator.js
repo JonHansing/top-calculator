@@ -4,7 +4,6 @@ let secondNum = undefined;
 let operator = undefined;
 
 let holdVal = '';
-let screenVal = 0;
 
 //Functions for basic math operations
 function add(a,b) {
@@ -24,6 +23,8 @@ function divide(a,b) {
 };
 
 function operate(num1, num2, op) {
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch (op) {
         case '+': return add(num1, num2);
         case '-': return subtract(num1, num2);
@@ -42,31 +43,24 @@ screenText.textContent = '0';
 
 numButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-        holdVal += btn.textContent;
-        if (operator == undefined) {
-            firstNum = Number(holdVal);
+        if (screenText.textContent == '0' || operator != undefined) {
+            screenText.textContent = btn.textContent;
         } else {
-            secondNum = Number(holdVal);
+            screenText.textContent += btn.textContent;
         };
-        screenText.textContent = holdVal;
     });
 });
 
 opButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-        if (operator != undefined) {
-            firstNum = holdVal = operate(firstNum, secondNum, operator);
+        if (operator == undefined) {
+            holdVal = screenText.textContent
+            operator = btn.textContent;
+        } else {
+            screenText.textContent = holdVal = operate(holdVal, screenText.textContent, operator);
+            operator = btn.textContent;
         };
-        operator = btn.textContent;
-        holdVal = '';
-    });
-});
 
-equalsButton.addEventListener("click", () => {
-    if (firstNum == undefined) {
-        console.log('Error - first number is undefined.')
-    } else {
-        firstNum = holdVal = operate(firstNum, secondNum, operator);
-        screenText.textContent = holdVal;
-    };
+        if (btn.textContent == '=') operator = undefined;
+    });
 });
